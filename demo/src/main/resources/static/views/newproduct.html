@@ -1,0 +1,79 @@
+<head>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"
+	rel="stylesheet" />
+<link rel="stylesheet" type="text/css" rel="css/myStyle.css" />
+<meta charset="utf-8">
+</head>
+<div class="container spacer">
+	<div class="panel panel-default" ng-if="mode==0">
+		<div class="panel-heading">Add New Product</div>
+		<div class="panel-body">
+
+			<form>
+
+				<div class="form-group">
+					<label class="control-label">Mark</label> <input
+						class="form-control" type="text" ng-model="product.mark">
+					</input>
+
+				</div>
+
+				<div class="form-group">
+					<label class="control-label">Request</label> <input
+						class="form-control" type="text" ng-model="product.request">
+					</input>
+
+				</div>
+
+
+				<div class="form-group">
+					<label class="control-label">Quantity</label> <input
+						class="form-control" type="text" ng-model="product.quantity">
+					</input>
+
+				</div>
+
+				<div>
+					<button ng-click="saveProduct()" class="btn btn-primary">Save</button>
+
+				</div>
+
+
+
+			</form>
+		</div>
+
+
+
+	</div>
+
+
+</div>
+
+
+
+<div class="container spacer">
+	<div class="panel panel-default" ng-if="mode==1">
+		<div class="panel-heading">Confirmation : <a href="#" ng-click="modeForm()">New</a></div>
+		<div class="panel-body">
+			<div class="form-group">
+				<label>ID:</label><label>{{product.id}}</label>
+			</div>
+			<div class="form-group">
+				<label>Mark:</label><label>{{product.mark}}</label>
+			</div>
+			<div class="form-group">
+			      <label>Request:</label><label>{{product.request}}</label>
+			     </div> 
+			<div class="form-group">
+				<label>Quantity:</label><label>{{product.quantity}}</label>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+

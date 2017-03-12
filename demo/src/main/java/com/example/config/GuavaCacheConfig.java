@@ -1,0 +1,64 @@
+package com.example.config;
+
+import java.util.Arrays;
+
+import org.springframework.cache.CacheManager;
+import org.springframework.cache.annotation.EnableCaching;
+import org.springframework.cache.concurrent.ConcurrentMapCache;
+import org.springframework.cache.ehcache.EhCacheCacheManager;
+import org.springframework.cache.ehcache.EhCacheManagerFactoryBean;
+import org.springframework.cache.support.SimpleCacheManager;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.core.io.ClassPathResource;
+
+@Configuration
+@ComponentScan(basePackages = "com.example.web")
+@EnableCaching
+public class GuavaCacheConfig {
+	private final long MAX_SIZE = 200;
+	
+	//@Bean
+	//public CacheManager cacheManager(){
+		
+		//SimpleCacheManager cacheManager = new SimpleCacheManager();
+		
+	
+		//GuavaCache productCache =  new GuavaCache("PRODUCT_DATA", CacheBuilder.newBuilder().maximumSize(MAX_SIZE).build());
+		//GuavaCache productCache= new GuavaCache("PRRRR",CacheBuilder.newBuilder().maximumSize(MAX_SIZE).build());
+		
+		//return cacheManager; 
+		
+	//}
+	
+//	
+//	@Bean
+//    public CacheManager cacheManager() {
+//        return new EhCacheCacheManager(((EhCacheManagerFactoryBean) cacheManager()).getObject());
+//    }
+	
+//	 @Bean
+//	    public CacheManager cacheManager() {
+//	            // configure and return an implementation of Spring's CacheManager SPI
+//	            SimpleCacheManager cacheManager = new SimpleCacheManager();
+//	            cacheManager.setCaches(Arrays.asList(new ConcurrentMapCache("products")));
+//	            return cacheManager;
+//	        }
+	
+	
+	
+	@Bean
+    public CacheManager cacheManager() {
+        return new EhCacheCacheManager(ehCacheCacheManager().getObject());
+    }
+	 @Bean
+	    public EhCacheManagerFactoryBean ehCacheCacheManager() {
+	        EhCacheManagerFactoryBean factory = new EhCacheManagerFactoryBean();
+	        factory.setConfigLocation(new ClassPathResource("ehcache.xml"));
+	        factory.setShared(true);
+	        return factory;
+	    }
+
+}
+	

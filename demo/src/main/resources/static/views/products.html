@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<div class="container spacer">
+		<div class="panel panel-primary">
+			<div class="panel-heading">List Of All The Product</div>
+			<div class="panel-body">
+
+				<div class="container">
+					<label>Keyword</label> <input type="text" ng-model="keyWord">
+					<button ng-click="load()" class="btn btn-primary">Submitted</button>
+				</div>
+
+
+				<table class="table table-striped">
+					<tr>
+						<th>ID</th>
+						<th>Mark</th>
+						<th>Request</th>
+						<th>Quantity</th>
+					</tr>
+					<tr ng-repeat=" p in pageProduct.content">
+						<td>{{p.id}}</td>
+						<td>{{p.mark}}</td>
+						<td>{{p.request}}</td>
+						<td>{{p.quantity}}</td>
+					</tr>
+
+				</table>
+				<div class="container">
+					<ul class="nav nav-pills">
+						<li ng-class="{active:pageCount==$index}"
+							ng-repeat=" p in pages track by $index"><a
+							ng-click="gotopage($index)">{{$index}}</a></li>
+					</ul>
+				</div>
+
+
+			</div>
+
+
+
+		</div>
+	</div>
+
+</head>
+<body>
+<div class="container">
+
+</div>
+
+</body>
+</html>
