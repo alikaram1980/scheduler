@@ -20,6 +20,12 @@ app.config(function($stateProvider, $urlRouterProvider) {
 		controller : "NewProductController"
 	});
 	
+	$stateProvider.state("users", {
+		url : "/users",
+		templateUrl : "views/users.html",
+		controller : "ContactController"
+	});
+	
 	
 	
 	$stateProvider.state("logout", {
@@ -63,6 +69,67 @@ app.controller('NewProductController', function($scope, $http) {
 
 app.controller("CategoryController", function($scope, $http) {
 
+});
+
+app.controller("ContactController", function($scope, $http) {
+	
+	var uid = 1;
+	$scope.user=null;
+	
+	
+	
+	$scope.saveContact=function(){
+		$http.post('http://localhost:8080/Users', $scope.user)
+
+		.success(function(data){
+			//$scope.contacts = data;
+			$scope.getUsers();
+
+		})
+
+		.error(function(err) {
+
+			console.log(err);
+
+		});
+
+	};
+	
+	
+	$scope.getUsers = function(){
+		
+		$http.get("http://localhost:8080/Users")
+		
+		.success(function(data){
+			$scope.contacts = data;
+
+		}).error(function(err) {
+			console.log(err);
+		})
+	};
+		
+	
+	
+	
+	
+	
+	
+	
+	/*$scope.contacts = [{
+	        id: 0,
+	        'name': 'Ali',
+	            'email': 'hello@gmail.com',
+	            'phone': '123-2343-44'
+	    }];*/
+	
+	/*$scope.saveContact=function(newcontact){
+		
+		newcontact.id = uid++;
+		$scope.contacts.push(newcontact);
+		$scope.newcontact={};
+		
+	}*/
+	$scope.getUsers();
 });
 app.controller("ProductController", function($scope, $http) {
 

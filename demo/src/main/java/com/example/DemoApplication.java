@@ -14,7 +14,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.example.dao.ProductRepository;
+import com.example.dao.UserRepository;
 import com.example.entity.Product;
+import com.example.entity.User;
 
 @SpringBootApplication
 public class DemoApplication implements CommandLineRunner{
@@ -24,15 +26,25 @@ public class DemoApplication implements CommandLineRunner{
 
 	@Autowired
 	private ProductRepository productRepository;
+	
+	@Autowired
+	private UserRepository userRepository;
 	public static void main(String[] args) {
 		SpringApplication.run(DemoApplication.class, args);
 	}
 
 	@Override
 	public void run(String... arg0) throws Exception {
-		//productRepository.save(new Product("hp 675",900,12));
-		//productRepository.save(new Product("samsung",500,27));
-		//productRepository.save(new Product("apple",130,19));
+		productRepository.save(new Product("hp 675",900,12));
+		productRepository.save(new Product("samsung",500,27));
+		productRepository.save(new Product("apple",130,19));
+		
+		/*userRepository.save(new User("Ali","ali@example.com",123456));
+		userRepository.save(new User("Wube","kifle@example.com",123456));
+		userRepository.save(new User("Alex","morales@example.com",123456));
+		*/
+		
+		
 		
 		
 		/* try {
